@@ -12,7 +12,7 @@ Ein interaktives Wortratespiel, bei dem du Dinosauriernamen erraten musst!
 
 ## Überblick
 
-**FossilFinder** ist ein Hangman-ähnliches Spiel, bei dem der Spieler versucht, den Namen eines Dinosauriers zu erraten. Du hast **6 Fehlversuche** pro Runde und kannst entweder einzelne Buchstaben oder das gesamte Wort erraten.
+**FossilFinder** ist ein Spiel ähnlich zum Galgenmännchen, bei dem der Spieler versucht, den Namen eines Dinosauriers zu erraten. Du hast **6 Fehlversuche** pro Spielrunde und kannst entweder einzelne Buchstaben oder das gesamte Wort erraten.
 
 ### Spielmechanik
 
@@ -20,7 +20,7 @@ Ein interaktives Wortratespiel, bei dem du Dinosauriernamen erraten musst!
 - **Ganze Wörter raten**: Wenn du falsch liegst, kostet dich das auch einen Lebenspunkt
 - **6 Lebenspunkte**: Bei 6 Fehlversuchen ist die Runde verloren
 - **Bis zu 10 Spielrunden** pro Spielsession
-- **Spielverlauf-Anzeige**: Am Ende wird dein Score angezeigt
+- **Spielverlauf**: Am Ende wird dir dein Spielverlauf angezeigt
 
 ---
 
@@ -29,13 +29,13 @@ Ein interaktives Wortratespiel, bei dem du Dinosauriernamen erraten musst!
 ### Anforderungen
 
 - Python **3.12+**
-- (Optional) `coverage`, `mypy`, `pylint` für Code-Analyse
+- optional: `coverage`, `mypy`, `pylint` für Code-Analyse
 
 ### Projekt starten
 
 ```bash
 cd FossilFinder
-python -m source.game
+python3.14 -m source.game
 ```
 
 ---
@@ -45,9 +45,9 @@ python -m source.game
 ### Tests ausführen
 
 Um die Tests ausführen zu lassen, sollten die folgenden drei Tools installiert werden:
-- coverage 7.13.5
-- mypy 1.19.1
-- pylint 4.0.5
+- `coverage`: 7.13.5
+- `mypy`: 1.19.1
+- `pylint`: 4.0.5
 
 
 ```bash
@@ -71,31 +71,34 @@ coverage report --show-missing
 
 | Tool | Status | Details |
 |------|--------|---------|
-| **Tests** | 43/43 bestanden | Vollständige Test-Abdeckung |
-| **Coverage** | 99% | Nur minimale Ausnahmen |
-| **MyPy** | keine Beanstandungen | Strikte Type-Checking |
-| **Pylint** | 10.0/10.0 | Hohe Code-Qualität |
+| **Tests** | 34/34 bestanden | fast vollständige Test-Abdeckung |
+| **Coverage** | 98% | nur minimale Ausnahmen |
+| **MyPy** | keine Beanstandungen | striktes Type-Checking |
+| **Pylint** | 10.0/10.0 | hohe Code-Qualität, es wurde eine Ausnahme gemacht |
 
 ---
 
 ## Projektstruktur
 
+Einige Dokumente aus dem `documentation` - Ordner sind auf diesem GitHub - Repository nicht zu finden, da sie nur für den Dozenten sind.
 ```
 FossilFinder/
 ├── source/                      # Spiellogik
-│   ├── game.py                 # Spielschleife
-│   ├── engine.py               # GameEngine
-│   ├── ui_creator.py           # UI & Terminal-Ausgabe
-│   ├── word_provider.py        # Wort-Management
-│   └── wordrepo.txt            # Dinosaurier-Namen
+│   ├── game.py                  # Spielschleife
+│   ├── engine.py                # GameEngine
+│   ├── ui_creator.py            # UI & Terminal-Ausgabe
+│   ├── word_provider.py         # Wort-Management
+│   └── wordrepo.txt             # Dinosaurier-Namen
 ├── test/                        # Unit Tests
 │   ├── test_game.py
 │   ├── test_engine.py
 │   ├── test_ui_creator.py
 │   └── test_word_provider.py
-├── documentation/               # Umfangreiche Dokumentation
-│   ├── documentation.md         # Vollständige Doku
-│   └── img/                     # Screenshots & Diagramme
+├── documentation/
+│   ├── word/
+    ├── md/
+    ├── documentation.pdf        # ausführliche Dokumentation
+│   └── Selbsteinschätzung.pdf                   
 ├── mypy.ini                     # MyPy Konfiguration
 ├── .pylintrc                    # Pylint Konfiguration
 ├── requirements.txt             # Abhängigkeiten
@@ -119,13 +122,13 @@ Das Spiel endet automatisch, wenn:
 
 Für detaillierte Informationen siehe:
 - [`documentation/documentation.md`](./documentation/documentation.md) — Vollständige Architektur & Implementation
-- [`test/`](./test/) — 43 Unit Tests mit hoher Abdeckung
+- [`test/`](./test/) — 34 Unit Tests
 
 ---
 
 ## Technische Details
 
-- **Sprache**: Python 3.12
+- **Sprache**: Python 3.12+
 - **Testing**: `unittest` + `coverage`
 - **Type Checking**: MyPy (strict mode)
 - **Linting**: Pylint (Rating: 10.0/10.0)
