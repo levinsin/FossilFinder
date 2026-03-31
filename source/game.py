@@ -1,37 +1,50 @@
-from engine import GameEngine, LetterGuessedError, InvalidGuessError
+"""
+This is the main file of the project.
+It contains the game loop and connects with the GameEngine class.
+"""
 
-def main():
+from source.engine import GameEngine, LetterGuessedError, InvalidGuessError
 
-    game = GameEngine("wordrepo.txt")
 
-    for _ in range(10):
-        game.next_round()
+def main() -> None:
+    """In the main function, the game loop runs."""
+
+    engine: GameEngine = GameEngine("wordrepo.txt")
+
+    while True:
+        if not engine.next_round():
+            engine.print_game_history()
+            break
 
         while True:
-            
-            guess = input("Enter your guess: ")
+            guess: str = str(input("Enter your guess: "))
             try:
-                game.make_guess(guess)
-            except (InvalidGuessError, LetterGuessedError) as e:
-                print(e)
+                engine.make_guess(guess)
+            except (InvalidGuessError, LetterGuessedError):
                 continue
-            
-            game.print_status()
 
-            if game.word_guessed():
+            engine.print_status()
+
+            if engine.word_guessed():
+                engine.save_game()
                 print("Congratulations! You've guessed the word!")
                 break
 
-            elif game.failed():
-                game.print_fail_message()
+            if engine.failed():
+                engine.save_game()
+                engine.print_fail_message()
                 break
-            
+
         action = input("Do you want to continue guessing? (y/n): ")
-        if action.lower() != 'y':
+        if action.lower() != "y":
+            engine.print_game_history()
             break
+
+        engine.creator.clear_screen()
 
         input("Press Enter to continue...")
 
+        engine.creator.clear_screen()
 
 
 if __name__ == "__main__":

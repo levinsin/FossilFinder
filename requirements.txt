@@ -1,0 +1,13 @@
+astroid==4.0.4
+coverage==7.13.5
+dill==0.4.1
+isort==8.0.1
+librt==0.8.1
+mccabe==0.7.0
+mypy==1.19.1
+mypy_extensions==1.1.0
+pathspec==1.0.4
+platformdirs==4.9.4
+pylint==4.0.5
+tomlkit==0.14.0
+typing_extensions==4.15.0
